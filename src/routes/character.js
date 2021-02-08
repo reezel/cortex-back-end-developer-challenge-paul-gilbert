@@ -21,7 +21,7 @@ router.get('/character/:characterId',async(req,res)=>{
         let character = await characterCreation.getCharacter(req.params.characterId);
         
         if(!character){
-            res.status(204).send();
+            res.status(204).send({message:'No Content'});
         }
 
         res.status(200).send(character);
@@ -37,7 +37,7 @@ router.post('/character/:characterId/heal/:hp',async(req,res)=>{
         let returnValue = await characterCreation.healCharacter(param.characterId, parseInt(param.hp));
         
         if(!returnValue){
-            res.status(204).send();
+            res.status(204).send({message:'No Content'});
         }
 
         res.status(200).send(returnValue);
@@ -53,7 +53,7 @@ router.post('/character/:characterId/tempHp/:tempHp',async(req,res)=>{
         let returnValue = await characterCreation.assignTempHp(param.characterId, parseInt(param.tempHp));
         
         if(!returnValue){
-            res.status(204).send();
+            res.status(204).send({message:'No Content'});
         }
 
         res.status(200).send(returnValue);
@@ -67,7 +67,7 @@ router.get('/character/:characterId/hp',async(req,res)=>{
         let hp = await characterCreation.getCharacterCurrentHp(req.params.characterId);
         
         if(!hp){
-            res.status(204).send();
+            res.status(204).send({message:'No Content'});
         }
 
         res.status(200).send(hp);
@@ -91,7 +91,7 @@ router.post('/character/:characterId/damage/:damageType/:damage',async(req,res)=
         let returnValue = await characterCreation.assignDamage(param.characterId, param.damageType, param.damage);
 
         if (!returnValue) {
-            res.status(204).send();
+            res.status(204).send({message:'No Content'});
         }
 
         res.status(200).send(returnValue);        
