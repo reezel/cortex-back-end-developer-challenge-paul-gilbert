@@ -22,7 +22,7 @@ describe(CharacterTest,()=>{
 describe(CharacterTest,()=>{
     it('POST /api/v1/character/ (creates a character)',async()=>{      
 
-        let rawdata = fs.readFileSync('.\\tests\\briv.json');
+        let rawdata = fs.readFileSync('.\\tests\\data\\briv.json');
         let parsedData = JSON.parse(rawdata);
         const response = await request(server).post('/api/v1/character/')
                                              .send(parsedData);       
