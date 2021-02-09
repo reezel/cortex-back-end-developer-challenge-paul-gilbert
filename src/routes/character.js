@@ -1,7 +1,6 @@
 import express from 'express';
 import characterCreation from "../logic/characterCreation"
 
-
 const router = express.Router();
 
 router.use(express.json());

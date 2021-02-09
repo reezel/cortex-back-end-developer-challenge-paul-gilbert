@@ -9,5 +9,4 @@ let character= new mongoose.Schema({
     immunities: Array
 })
 
-
 module.exports = mongoose.model("Character", character);

@@ -3,7 +3,10 @@
 This solution was larger made posssible by a PluralSight course, [Node.js: Getting Started][pluralSight], and a tutorial I used to get started, [How To Write An Express JS Server Using Test Driven Development][tutorial].
 
 
+
 ## Installation
+
+The first thing needed for installing this project is a local installation of a mongo database.
 
 To install this project, run the following commands in the root directory.
 
@@ -41,6 +44,38 @@ The following command will build the project for release, using Babel to ensure 
 yarn run build
 ```
 The result of the build will be copied to the dist directory, which can then be distributed where installation is needed.
+
+## Development Notes
+
+### Development Decisions
+
+Below I woul like to document some of the decisions I made while developing this project and why I made them. 
+
+1. Node.js: Being unfamiliar with the language, I had to focus a large amount of my time on familiarizing myself with it's practicies and quirks. This will be one of the biggest factors that motivates other decisions.
+1. Testing: I normally would include a large amount of unit tests in my code, however I did have the time I would like for that here. Instead of the unit tests I would like to have added, I have integration tests that work with the database and show that the system is behaving as it should. These tests are inspired by the article I sited above.
+1. Dependency Injection: To me, one of the largest leaps in my coding has been the use of dependency injection. It allows much easier separation of layers and the use of mocking and unit tests. I think the ability to learn the practice in this new system was outside of the scope for me here.
+1. Mongo: I have spent most of my career as a developer works with normal transaction-SQL databases. This was my first time working with Mongo and I found the implementation incredibly quick and easy. I however think I find the lack of data integrity somewhat unnerving and am not sure how I would feel about it in anything beyond small projects.
+
+### System Decisions
+Here are some decisions that I chose to make about the system itself as I was designing it.
+
+1. Average hp: For myself, as long as I have played D&D 5th edition, I have made characters using the rule of making characters with the average number per level, so I gravitated towards that rule for this system.
+1. First level: One rule that was missing from the documentation was that the first level for a character is supposed to be max hit points (regardless of hp determination method). I thought this was an import rule and assumed the first listed class was the level 1 class and used it to give max hit points. 
+1. JSON errors:I began writing custom errors for missing JSON sections. I realized that granted the amount of time I had, this would quickly escalate and chose to instead simply stick to a 500 error for now.
+1. JSON cast:One of the first hurdles I hit was realizing the JSON supplied had different casing for different examples of the same field. I had to find a solution to make sure all property names were imported as lowercase to allow me to not hit errors from this.
+  
+  ### Suggested Enhancements
+
+  Here are some enhancements I wanted to make beyond what I detailed above. I either did not have time or had to prioritize other items above these.
+
+  1. Validate Damage Types: D&D has a set amount of damage types. I wanted to be able to validate the type of damage that was used was a valid one.
+  1. Damage without a type: Often when assigning damage to a character, the player has already done the work of resistances and immunities. This means there might be times they want to send in untyped damage that ignores these rules and just assigns damage.
+  1. First level: Find a way to pass in on character creation which class is the characters first level. This doesn't make a huge difference, but it's a nonzero difference in hit points.
+  1. Long Rest: This is low hanging fruit. Pass in the ability to give a character a long rest. This would reset their hit points to max and their temporary hit points to 0.
+  1. Short Rest: Harder than a long rest and would modify long rest. You can add in the ability to spend hit dice, maintain the hice, and heal based on them. Long rests would then recover half of their hit dice (minimum of 1) each time.
+  1. Item Update: The default JSON character given had an item added that would add to the character's constitution. However, the ioun stone that was added should technically be implemented not as a modifier of 2 but as "+2" with a max of 20. The current system also does not allow for an Amulet of Health to be implemted, which would replace Constitution with 19 if it is lower than that. 
+
+
 
 ## API Documentation
 <br />

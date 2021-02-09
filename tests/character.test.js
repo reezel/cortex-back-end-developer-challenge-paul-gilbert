@@ -2,7 +2,6 @@ import server from '../src/index';
 import request  from 'supertest';
 import {expect} from 'chai';
 
-
 const bodyParser = require('body-parser')
 
 server.use(bodyParser.json);

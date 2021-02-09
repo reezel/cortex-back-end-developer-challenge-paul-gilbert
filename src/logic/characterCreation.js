@@ -1,6 +1,5 @@
 import Character from '../models/character';
 const returnObjects = require('../models/returnObjects');
-const os = require("os");
 const returnValues = returnObjects;
 const constitution = 'constitution';
 const immunity = 'immunity';
