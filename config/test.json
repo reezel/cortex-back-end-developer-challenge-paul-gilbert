@@ -1,5 +1,5 @@
 {
     "name": "Server Test",
-    "database": "mongodb://localhost:27017/HP_test",
+    "database": "mongodb://host.docker.internal:27017/HP_test",
     "port": 3100
-    }
+}
