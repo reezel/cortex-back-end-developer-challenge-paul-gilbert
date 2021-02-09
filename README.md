@@ -203,38 +203,25 @@ Get hit points for _characterId_.
 ----
 Assign *damage* points of *damageType* damage to *characterId*.
 
-* **URL**
-
+* **URL** <br/>
   <//api/v1/character/*characterId*/damage/*damageType*/*damage*>
-
-* **Method:**
-  
+* **Method:**<br/>
   <_`POST`_>  
-
-  *  **Params**   
-
-   **Required:**
- 
-      characterId=[string]
-
-      damageType=[string]
-
-      damage=[number]
-
+  * **Params**<br/>   
+```
+    characterId=[string]
+    damageType=[string]
+    damage=[number]
+```
 * **Success Response:**
-  
   * **Code:** 200 <br />
     **Content:** `damageDealt`
- 
-* **Error Response:**
-
+ * **Error Response:**<br />
    If no character is found for *characterId*.
-
-  * **Code:** 204 No Content<br />
-  **Content:** `{message: "No Content"}`
+    * **Code:** 204 No Content<br />
+    **Content:** `{message: "No Content"}`
 
     OR
-
   * **Code:** 500 Interval server error <br />
   **Content:** `{message: "Interval server error"}`
 
