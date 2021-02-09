@@ -8,7 +8,8 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN yarn install
+RUN npm i global yarn
+RUN yarn
 # If you are building your code for production
 # RUN npm ci --only=production
 
@@ -16,4 +17,4 @@ RUN yarn install
 COPY . .
 
 EXPOSE 3000
-CMD [ "node", "yarn run dev" ]
+CMD [ "yarn", "run dev" ]
