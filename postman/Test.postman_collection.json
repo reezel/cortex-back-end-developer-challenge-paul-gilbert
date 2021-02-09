@@ -20,12 +20,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/",
+					"raw": "http://localhost:49160/api/v1/character/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
@@ -42,20 +42,20 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/60203d5d2b75224a40eef8fe/damage/bashing/35",
+					"raw": "http://localhost:49160/api/v1/character/60203d5d2b75224a40eef8fe/damage/Slashing/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
 						"character",
 						"60203d5d2b75224a40eef8fe",
 						"damage",
-						"bashing",
-						"35"
+						"Slashing",
+						"10"
 					]
 				}
 			},
@@ -67,12 +67,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/",
+					"raw": "http://localhost:49160/api/v1/character/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
@@ -89,12 +89,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/60203d5d2b75224a40eef8fe",
+					"raw": "http://localhost:49160/api/v1/character/60203d5d2b75224a40eef8fe",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
@@ -111,12 +111,12 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/60203d5d2b75224a40eef8fe/heal/25",
+					"raw": "http://localhost:49160/api/v1/character/60203d5d2b75224a40eef8fe/heal/25",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
@@ -135,12 +135,12 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/60203d5d2b75224a40eef8fe/tempHp/5",
+					"raw": "http://localhost:49160/api/v1/character/60203d5d2b75224a40eef8fe/tempHp/5",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
@@ -159,12 +159,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/60203d5d2b75224a40eef8fe/hp",
+					"raw": "http://localhost:49160/api/v1/character/60203d5d2b75224a40eef8fe/hp",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
@@ -182,12 +182,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/v1/character/60202b9f3bb1677770046cac/hp",
+					"raw": "http://localhost:49160/api/v1/character/60202b9f3bb1677770046cac/hp",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3000",
+					"port": "49160",
 					"path": [
 						"api",
 						"v1",
