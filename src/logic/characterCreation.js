@@ -6,7 +6,8 @@ const immunity = 'immunity';
 const resistance = 'resistance';
 
 module.exports.assignDamage = async (characterId, damageType, damage) => {
-    let character = await Character.findById(characterId).exec();    
+    let character = await Character.findById(characterId).exec(); 
+    damageType = damageType.toLowerCase();   
     if(character){
         let returnValue = new returnValues.damageDealt(characterId)
         returnValue.previousHp = character.hp;
@@ -193,11 +194,11 @@ const getCurrentHpReturnObject = character => {
 }
 
 const getDefense = (defenses, defenseType) => {
-    var returnValue = [];
+    var returnValue = [];    
 
     defenses.forEach(defense => {
-        if(defense.defense === defenseType){
-            returnValue.push(defense.type);
+        if(defense.defense.toLowerCase() === defenseType.toLowerCase()){
+            returnValue.push(defense.type.toLowerCase());
         }
     });
 
