@@ -74,140 +74,89 @@ Here are some decisions that I chose to make about the system itself as I was de
   1. Long Rest: This is low hanging fruit. Pass in the ability to give a character a long rest. This would reset their hit points to max and their temporary hit points to 0.
   1. Short Rest: Harder than a long rest and would modify long rest. You can add in the ability to spend hit dice, maintain the dice, and heal based on them. Long rests would then recover half of their hit dice (minimum of 1) each time.
   1. Item Update: The default JSON character given had an item added that would add to the character's constitution. However, the Ioun stone that was added should technically be implemented not as a modifier of 2 but as "+2" with a max of 20. The current system also does not allow for an Amulet of Health to be implemented, which would replace Constitution with 19 if it is lower than that. 
-
-
-
-## API Documentation
-<br />
-
+## API Documentation<br />
 ----
 ## **Get All Characters**
 ----
 Get all characters stored in the system.
-
-* **URL**
-
+* **URL**<br />
   <//api/v1/character>
-
-* **Method:**
-  
+* **Method:**  
   <_`GET`_>  
-  
-* **Success Response:**
- 
+* **Success Response:** 
   * **Code:** 200 <br />
     **Content:** `characterReturn[]`
- 
 * **Error Response:**
-
   * **Code:** 500 Interval server error <br />
     **Content:** `{message: "Interval server error"}`
 ----
 ## **Get Character**
 ----
 Get a character by _characterId_.
-
 * **URL**
-
   <//api/v1/character/*characterId*>
-
-* **Method:**
-  
-  <_`GET`_>  
-
-  *  **Params**   
-
-   **Required:**
- 
+* **Method:**  
+  <_`GET`_>
+  * **Params**
+``` 
       characterId=[string]
-
-* **Success Response:**
-  
+```
+* **Success Response:**  
   * **Code:** 200 <br />
-    **Content:** `characterReturn`
- 
+    **Content:** `characterReturn` 
 * **Error Response:**
-
    If no character is found for _characterId_.
-
   * **Code:** 204 No Content<br />
-  **Content:** `{message: "No Content"}`
-
-    OR
-
+  **Content:** `{message: "No Content"}`<br />
+  OR
   * **Code:** 500 Interval server error <br />
   **Content:** `{message: "Interval server error"}`
 ----
 ## **Create Character**
 ---
 Create a new character in the system and set their initial hit points.
-
-* **URL**
-
+* **URL**<br />
   <//api/v1/character>
-
-* **Data Params**
-
+* **Data Params**<br />
     The body should be a JSON object representing a character as defined by the original project request.
-
-* **Method:**
-  
+* **Method:**  
   <_`POST`_>  
-  
-* **Success Response:**
- 
+* **Success Response:** 
   * **Code:** 200 <br />
-    **Content:** `characterReturn[]`
- 
+    **Content:** `characterReturn` 
 * **Error Response:**
-
   * **Code:** 500 Interval server error <br />
 ----
 ## **Get Character Hp**
 ----
 Get hit points for _characterId_.
-
-* **URL**
-
+* **URL**<br />
   <//api/v1/character/*characterId*/hp>
-
-* **Method:**
-  
-  <_`GET`_>  
-
-  *  **Params**   
-
-   **Required:**
- 
-      characterId=[string] 
-
+* **Method:**  
+  <_`GET`_>
+*  **Params**<br />
+  ```
+      characterId=[string]
+  ```
 * **Success Response:**
-  
   * **Code:** 200 <br />
     **Content:** `currentHp`
- 
 * **Error Response:**
-
    If no character is found for _characterId_.
-
   * **Code:** 204 No Content<br />
-    **Content:** `{message: "No Content"}`
-
-    OR
-
+    **Content:** `{message: "No Content"}`<br />
+  OR
   * **Code:** 500 Interval server error <br />
     **Content:** `{message: "Interval server error"}`
-
 ----
 ## **Assign Character Damage**
 ----
 Assign *damage* points of *damageType* damage to *characterId*.
-
 * **URL** <br/>
   <//api/v1/character/*characterId*/damage/*damageType*/*damage*>
 * **Method:**<br/>
   <_`POST`_>  
-  * **Params**<br/>   
+* **Params**<br/>   
 ```
     characterId=[string]
     damageType=[string]
@@ -216,15 +165,94 @@ Assign *damage* points of *damageType* damage to *characterId*.
 * **Success Response:**
   * **Code:** 200 <br />
     **Content:** `damageDealt`
- * **Error Response:**<br />
-   If no character is found for *characterId*.
-    * **Code:** 204 No Content<br />
-    **Content:** `{message: "No Content"}`
-
+* **Error Response:**<br />
+If no character is found for *characterId*.
+  * **Code:** 204 No Content<br />
+    **Content:** `{message: "No Content"}`<br />
     OR
   * **Code:** 500 Interval server error <br />
-  **Content:** `{message: "Interval server error"}`
-
+    **Content:** `{message: "Interval server error"}`
+----
+## **Heal Character**
+----
+Heals *characterId* for *hp* points.
+* **URL** <br/>
+  <//api/v1/character/*characterId*/hp/*hp*>
+* **Method:**<br/>
+  <_`POST`_>  
+* **Params**<br/>   
+```
+    characterId=[string]
+    hp=[number]
+```
+* **Success Response:**
+  * **Code:** 200 <br />
+    **Content:** `currentHpChange`
+* **Error Response:**<br />
+If no character is found for *characterId*.
+  * **Code:** 204 No Content<br />
+    **Content:** `{message: "No Content"}`<br />
+    OR
+  * **Code:** 500 Interval server error <br />
+    **Content:** `{message: "Interval server error"}`
+----
+## **Heal Character**
+----
+Assign *characterId* *tempHp* temporary hit points.
+* **URL** <br/>
+  <//api/v1/character/*characterId*/tempHP/*tempHP*>
+* **Method:**<br/>
+  <_`POST`_>  
+* **Params**<br/>   
+```
+    characterId=[string]
+    tempHP=[number]
+```
+* **Success Response:**
+  * **Code:** 200 <br />
+    **Content:** `currentHpChange`
+* **Error Response:**<br />
+If no character is found for *characterId*.
+  * **Code:** 204 No Content<br />
+    **Content:** `{message: "No Content"}`<br />
+    OR
+  * **Code:** 500 Interval server error <br />
+    **Content:** `{message: "Interval server error"}`
+----
+## **Return Objects**
+----
+* **currentHp**
+```
+{
+  "characterId": "string; characterId from database",
+  "currentHp": "number; character's hp when call was complete",
+  "maxHp": "number; comes from database",
+  "tempHp": "number; character's tempHp when call was complete",
+}
+```
+* **currentHpChange extends currentHp**
+```
+{
+  "previousHp": "number; hp when call was initiated",
+  "previousTempHp": "number; tempHp when call was initiated",
+}
+```
+* **damageDealt extends currentHpChange**
+```
+{
+  "damage": "number; damage that was sent in by call",
+  "damageTaken": "number; damage character took after calculations",
+  "damageType": "string; the damage type of the attack",
+  "resistance": "string: any resistance that is relative to the attack"
+  "immunity": "string: any immunity that is relative to the attack"
+}
+```
+* **characterReturn extends currentHp**
+```
+{
+  "character": "JSON; The character data passed into the database"
+}
+```
 
 
 [//]: # (Links used in documentation.)
