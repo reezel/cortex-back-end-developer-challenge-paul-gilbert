@@ -83,17 +83,16 @@ Here are some decisions that I chose to make about the system itself as I was de
 ----
 ## **Get All Characters**
 ----
-  Get all characters stored in the system.
+Get all characters stored in the system.
 
 * **URL**
 
-  <_//api/v1/character_>
+  <//api/v1/character>
 
 * **Method:**
   
   <_`GET`_>  
   
-
 * **Success Response:**
  
   * **Code:** 200 <br />
@@ -106,11 +105,11 @@ Here are some decisions that I chose to make about the system itself as I was de
 ----
 ## **Get Character**
 ----
-Get a character by <em>characterId</em>.
+Get a character by _characterId_.
 
 * **URL**
 
-  <<em>//api/v1/character/</em>characterId>
+  <//api/v1/character/*characterId*>
 
 * **Method:**
   
@@ -120,7 +119,7 @@ Get a character by <em>characterId</em>.
 
    **Required:**
  
-   `characterId=[string]`
+      characterId=[string]
 
 * **Success Response:**
   
@@ -129,7 +128,7 @@ Get a character by <em>characterId</em>.
  
 * **Error Response:**
 
-   If no character is found for <em>characterId<em>.
+   If no character is found for _characterId_.
 
   * **Code:** 204 No Content<br />
   **Content:** `{message: "No Content"}`
@@ -140,12 +139,12 @@ Get a character by <em>characterId</em>.
   **Content:** `{message: "Interval server error"}`
 ----
 ## **Create Character**
-----
-  Create a new character in the system. Sets their initial hit points.
+---
+Create a new character in the system and set their initial hit points.
 
 * **URL**
 
-  <_//api/v1/character_>
+  <//api/v1/character>
 
 * **Data Params**
 
@@ -166,11 +165,11 @@ Get a character by <em>characterId</em>.
 ----
 ## **Get Character Hp**
 ----
-Get hit points for *characterId*.
+Get hit points for _characterId_.
 
 * **URL**
 
-  < *//api/v1/character/* characterId */hp*>
+  <//api/v1/character/*characterId*/hp>
 
 * **Method:**
   
@@ -180,7 +179,7 @@ Get hit points for *characterId*.
 
    **Required:**
  
-   `characterId=[string]`
+      characterId=[string] 
 
 * **Success Response:**
   
@@ -189,25 +188,24 @@ Get hit points for *characterId*.
  
 * **Error Response:**
 
-   If no character is found for <em>characterId<em>.
+   If no character is found for _characterId_.
 
   * **Code:** 204 No Content<br />
-  **Content:** `{message: "No Content"}`
+    **Content:** `{message: "No Content"}`
 
     OR
 
   * **Code:** 500 Interval server error <br />
-  **Content:** `{message: "Interval server error"}`
+    **Content:** `{message: "Interval server error"}`
 
-  ----
+----
 ## **Assign Character Damage**
 ----
-
 Assign *damage* points of *damageType* damage to *characterId*.
 
 * **URL**
 
-  <<em>//api/v1/character/</em>characterId<em>/hp</em>>
+  <//api/v1/character/*characterId*/damage/*damageType*/*damage*>
 
 * **Method:**
   
@@ -217,16 +215,20 @@ Assign *damage* points of *damageType* damage to *characterId*.
 
    **Required:**
  
-   `characterId=[string]`
+      characterId=[string]
+
+      damageType=[string]
+
+      damage=[number]
 
 * **Success Response:**
   
   * **Code:** 200 <br />
-    **Content:** `currentHp`
+    **Content:** `damageDealt`
  
 * **Error Response:**
 
-   If no character is found for <em>characterId<em>.
+   If no character is found for *characterId*.
 
   * **Code:** 204 No Content<br />
   **Content:** `{message: "No Content"}`
