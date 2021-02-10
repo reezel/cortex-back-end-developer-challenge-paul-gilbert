@@ -46,6 +46,22 @@ router.post('/character/:characterId/heal/:hp',async(req,res)=>{
     }
 })
 
+router.post('/character/:characterId/longRest',async(req,res)=>{
+    try {
+        let param = req.params;        
+        let returnValue = await characterCreation.longRest(param.characterId);
+        
+        if(!returnValue){
+            res.status(204).send({message:'No Content'});
+        }
+
+        res.status(200).send(returnValue);
+    } catch (error) {
+        console.log(error)
+        res.status(500).send({message:'Interval server error'})
+    }
+})
+
 router.post('/character/:characterId/tempHp/:tempHp',async(req,res)=>{
     try {
         let param = req.params;        
@@ -61,6 +77,7 @@ router.post('/character/:characterId/tempHp/:tempHp',async(req,res)=>{
         res.status(500).send({message:'Interval server error'})
     }
 })
+
 router.get('/character/:characterId/hp',async(req,res)=>{
     try {
         let hp = await characterCreation.getCharacterCurrentHp(req.params.characterId);

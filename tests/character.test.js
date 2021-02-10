@@ -173,6 +173,24 @@ describe(CharacterTest,()=>{
     })
 })
 
+describe(CharacterTest,()=>{
+    it('POST /api/v1/character/:characterId/longRest (Gives characterId a long rest: Status Code 204)',async()=>{
+        const response = await request(server).post('/api/v1/character/' + characterIdInvalid + '/longRest');
+        expect(response.status).to.equal(204)
+    })
+})
+
+describe(CharacterTest,()=>{
+    it('POST /api/v1/character/:characterId/heal/:hp (Gives characterId a long rest)',async()=>{
+
+        const response = await request(server).post('/api/v1/character/' + characterId + '/longRest');
+        expect(response.status).to.equal(200);
+        
+        let data = getObject(response.body);
+        expect(data.hp).to.equal(45);
+        expect(data.tempHp).to.equal(0);
+    })
+})
 
 const getObject = data => {
     let stringyData = JSON.stringify(data);

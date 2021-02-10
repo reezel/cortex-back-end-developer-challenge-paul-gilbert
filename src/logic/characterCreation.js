@@ -131,6 +131,28 @@ module.exports.healCharacter = async (characterId, hp) => {
     }
 }
 
+module.exports.longRest = async (characterId) => {
+    let character = await Character.findById(characterId).exec();    
+    if(character){
+        let returnValue = new returnValues.currentHpChange(characterId);
+        returnValue.previousTempHp = character.tempHp;
+        returnValue.previousHp = character.hp;
+        returnValue.maxHp = character.maxHp;
+        returnValue.tempHp = 0;
+        returnValue.hp = character.maxHp
+
+        character.tempHp = returnValue.tempHp
+        character.hp  = returnValue.hp;
+
+        character.hp = returnValue.hp;
+        character.save(function (err) {
+            if (err) return console.error(err);
+        });  
+
+        return returnValue;
+    }
+}
+
 const createCharacterDb = (characterJSON, characterConverted, maxHp) => {
     let defenses = getDefenses(characterConverted);
     let character = new Character({

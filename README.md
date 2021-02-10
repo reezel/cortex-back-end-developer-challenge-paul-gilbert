@@ -49,7 +49,7 @@ Here are some enhancements I wanted to make beyond what I detailed above. I eith
 1. Validate Damage Types: D&D has a set amount of damage types. I wanted to be able to validate the type of damage that was used was a valid one.
 1. Damage without a type: Often when assigning damage to a character, the player has already done the work of resistances and immunities. This means there might be times they want to send in untyped damage that ignores these rules and just assigns damage.
 1. First level: Find a way to pass in on character creation which class is the characters first level. This does not make a huge difference, but it's a nonzero difference in hit points.
-1. Long Rest: This is low hanging fruit. Pass in the ability to give a character a long rest. This would reset their hit points to max and their temporary hit points to 0.
+1. Long Rest: ~~This is low hanging fruit. Pass in the ability to give a character a long rest. This would reset their hit points to max and their temporary hit points to 0.~~ I decided at the last moment to add this on. I knew it would not take me long and put it in before finalizing.
 1. Short Rest: Harder than a long rest and would modify long rest. You can add in the ability to spend hit dice, maintain the dice, and heal based on them. long rests would then recover half of their hit dice (minimum of 1) each time.
 1. Item Update: The default JSON character given had an item added that would add to the character's constitution. However, the Ioun stone that was added should technically be implemented not as a modifier of 2 but as "+2" with a max of 20. The current system also does not allow for an Amulet of Health to be implemented, which would replace Constitution with 19 if it is lower than that. 
 ---
@@ -186,6 +186,28 @@ Assign *characterId* *tempHp* temporary hit points.
 ```
     characterId=[string]
     tempHP=[number]
+```
+* **Success Response:**
+  * **Code:** 200 <br />
+    **Content:** `currentHpChange`
+* **Error Response:**<br />
+If no character is found for *characterId*.
+  * **Code:** 204 No Content<br />
+    **Content:** `{message: "No Content"}`<br />
+    OR
+  * **Code:** 500 Interval server error <br />
+    **Content:** `{message: "Interval server error"}`
+---
+## **Long Rest**
+---
+Gives *characterId* a long rest.
+* **URL** <br/>
+  <//api/v1/character/*characterId*/longRest>
+* **Method:**<br/>
+  <_`POST`_>  
+* **Params**<br/>   
+```
+    characterId=[string]
 ```
 * **Success Response:**
   * **Code:** 200 <br />

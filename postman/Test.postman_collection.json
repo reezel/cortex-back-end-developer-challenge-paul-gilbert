@@ -130,6 +130,29 @@
 			"response": []
 		},
 		{
+			"name": "character/id/longRest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/character/60203d5d2b75224a40eef8fe/longRest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"character",
+						"60203d5d2b75224a40eef8fe",
+						"longRest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "character/id/tempHp/tempHp",
 			"request": {
 				"method": "POST",
