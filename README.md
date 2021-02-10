@@ -26,7 +26,7 @@ yarn run dev
 Included with the project, in the postman folder, is a collection of already setup calls to test the solution in development mode.
 ### Production Build
 The following command will build the project for release, using Babel to ensure the code is ready to be supported in whatever environment it is needed in. This utilizes Babel, a node package that compiles javascript code in a way that allows it to be supported widely while still using new features in your code.
-```sh
+```
 yarn run build
 ```
 The result of the build will be copied to the dist directory, which can then be distributed where installation is needed.
